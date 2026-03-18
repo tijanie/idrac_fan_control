@@ -1,3 +1,4 @@
+#!/bin/bash
 temp="$(ipmitool -I lanplus -U root -P LegioFulminata#8 -H 192.168.0.150 sdr type temperature | grep ^Temp | grep -vi disabled | awk -F'|' '{print $5}' | sed 's/^ *//' | awk '{print $1}')"
 if ((temp < 60)); then
   ipmitool -I lanplus -U root -P LegioFulminata#8 -H 192.168.0.150 raw 0x30 0x30 0x02 0xff 0x14
