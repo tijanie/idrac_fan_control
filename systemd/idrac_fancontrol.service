@@ -1,0 +1,9 @@
+[Unit]
+Description=IDRAC Fan Control
+After=network-online.target innotech_scraper_api.service
+
+[Service]
+User=magus
+WorkingDirectory=/home/magus/stuff/idrac_fan_control
+ExecStart=/home/magus/stuff/idrac_fan_control/fancontrol.sh
+Restart=on-failure
